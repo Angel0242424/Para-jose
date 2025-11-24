@@ -1,0 +1,354 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-void: #0a0a0f;
+  --color-hallownest: #1a1a2e;
+  --color-soul: #8a9cff;
+  --color-silk: #ff4757;
+  --color-bone: #f8f8f2;
+  --color-shadow: #2d2d44;
+  --color-glow: #00ffff;
+
+  --font-display: "Cinzel", serif;
+  --font-body: "Inter", sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: linear-gradient(180deg, var(--color-void) 0%, var(--color-hallownest) 100%);
+  color: var(--color-bone);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Particles Background */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.hero-content {
+  text-align: center;
+  position: relative;
+  padding: 2rem;
+}
+
+.knight-silhouette {
+  margin-bottom: 2rem;
+  animation: float 6s ease-in-out infinite;
+}
+
+.knight-silhouette img {
+  width: 200px;
+  height: auto;
+  filter: drop-shadow(0 0 30px var(--color-soul));
+  opacity: 0.9;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px var(--color-soul), 0 0 40px var(--color-soul);
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: var(--color-soul);
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+}
+
+.soul-orb {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, var(--color-soul) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: soul-float 4s ease-in-out infinite;
+  box-shadow: 0 0 20px var(--color-soul);
+}
+
+.soul-orb:nth-child(4) {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.soul-orb:nth-child(5) {
+  top: 60%;
+  right: 15%;
+  animation-delay: 1.3s;
+}
+
+.soul-orb:nth-child(6) {
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 2.6s;
+}
+
+/* Games Section */
+.games-section {
+  position: relative;
+  z-index: 2;
+  padding: 6rem 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(45, 45, 68, 0.5) 100%);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--color-bone);
+  text-shadow: 0 0 10px var(--color-glow);
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.game-card {
+  background: rgba(26, 26, 46, 0.8);
+  border: 2px solid rgba(138, 156, 255, 0.3);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.game-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--color-soul);
+  box-shadow: 0 10px 40px rgba(138, 156, 255, 0.3);
+}
+
+.game-image {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.game-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.game-card:hover .game-image img {
+  transform: scale(1.1);
+}
+
+.game-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 15, 0.8) 100%);
+}
+
+.game-content {
+  padding: 2rem;
+}
+
+.game-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--color-silk);
+}
+
+.game-quote {
+  font-style: italic;
+  color: var(--color-soul);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  border-left: 3px solid var(--color-soul);
+  padding-left: 1rem;
+}
+
+.game-description {
+  color: rgba(248, 248, 242, 0.8);
+  line-height: 1.8;
+}
+
+/* Message Section */
+.message-section {
+  position: relative;
+  z-index: 2;
+  padding: 6rem 0;
+}
+
+.message-card {
+  background: rgba(26, 26, 46, 0.9);
+  border: 2px solid var(--color-silk);
+  border-radius: 1.5rem;
+  padding: 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 60px rgba(255, 71, 87, 0.2);
+}
+
+.message-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.message-title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--color-silk);
+  text-shadow: 0 0 15px var(--color-silk);
+}
+
+.message-text {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+  color: rgba(248, 248, 242, 0.9);
+}
+
+.message-signature {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(138, 156, 255, 0.3);
+}
+
+.message-signature p {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-soul);
+  margin-bottom: 1rem;
+}
+
+.soul-vessel {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  background: radial-gradient(circle, var(--color-soul) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 30px var(--color-soul);
+}
+
+/* Footer */
+.footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  color: rgba(248, 248, 242, 0.5);
+  font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px var(--color-soul), 0 0 40px var(--color-soul);
+  }
+  to {
+    text-shadow: 0 0 30px var(--color-soul), 0 0 60px var(--color-soul), 0 0 80px var(--color-soul);
+  }
+}
+
+@keyframes soul-float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(30px);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .games-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .message-card {
+    padding: 2rem;
+  }
+
+  .knight-silhouette img {
+    width: 150px;
+  }
+}
